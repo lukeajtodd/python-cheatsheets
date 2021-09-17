@@ -107,7 +107,7 @@ print(lis2 is lis)
 print(lis2 == lis)
 print("\n")
 
-# Use "del" to delete an element from a list
+# Use "del" to delete an element from a list, tuple or dict(by key)
 print("'del' can be used to delete an element from a list: \n")
 del lis2[2]
 print(lis2)
@@ -123,9 +123,45 @@ lis2.extend(letters)
 print(lis2)
 print("\n")
 
-# "in" can be used to check for a value existing in a list
+# "in" can be used to check for a value existing in a list, tuple or dict(keys)
 print("'in' can be used to check for a value in a list: \n")
 print('hi' in lis)
 print(1 in lis2)
 print("\n")
 
+# Typles are like lists but with immutability
+print("Tuples are like lists but they are immutable: \n")
+tup = (1,  2, 3)
+print(tup)
+print("\n")
+
+# Tuples with one value have to have a "," after the item
+print("Tuples with 1 value need a comma otherwise they return the value: \n")
+print((1,))
+print((1))
+print(())
+print("\n")
+
+# Most list operations work the same
+print("Most of the list operations can be used the same: \n")
+print(len(tup))
+print(tup + (4, 5, 6))
+print(tup[:2])
+print(1 in tup)
+print("\n")
+
+# Tuples and lists can be destructured
+print("Tuples and lists can be destructured into variables: \n")
+a, b, c = tup
+print(a, b, c)
+a, *b, c = tup + (4, 5, 6)
+print(a, b, c)
+print("\n")
+
+# Keys for dictionaries have to be immutable types. (e.g int, float, string, tuple)
+print("Keys for dicts need to be immutable (e.g. int, float, string, tuple): \n")
+dict = { "one" : 1, 2: "two", 3.0: 3}
+print(dict)
+print("\n")
+
+#
