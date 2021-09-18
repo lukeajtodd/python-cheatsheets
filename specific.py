@@ -267,3 +267,101 @@ dict_list = list(a_dict.keys())
 print(dict_list)
 print("\n")
 
+# Functions are defined with def
+print("Functions are defined with 'def': \n")
+def a_func():
+    print("I'm a function")
+    return 'banana'
+print(a_func())
+print("\n")
+
+# Functions have have named or non-named parameters
+print("Functions have named or non-named parameters: \n")
+def b_func(a, b):
+    return a + b
+print(b_func(1, 2))
+print(b_func(a=2, b=3))
+print("\n")
+
+# Variable number of keyword and non keyword args can be used
+print("A varable number of keyword and non-keyword arguments can be used: \n")
+def c_func(*args):
+    return args
+def d_func(**kwargs):
+    return kwargs
+def e_func(*args, **kwargs):
+    print(args)
+    print(kwargs)
+print(c_func(1, 2, 3))
+print(d_func(a=1, b=2, c=3))
+e_func(
+    1, 2,
+    a=3, b=4
+)
+print("\n")
+
+# Variables can be expanded into a function
+# Keys for kwarsg must be strings
+print("Variables can be expanded into a function: \n")
+e_func(
+    *(1, 3, 4, 5),
+    **{'one': 1, 'two': 2}
+)
+print("\n")
+
+# Multiple values can be returned as a tuple
+print("Multiple values can be returned as a tuple: \n")
+def f_func(a, b):
+    return b, a # or (b, a)
+print(f_func(1, 2))
+x = 1
+y = 2
+print(x, y)
+x, y = f_func(x, y)
+print(x, y)
+print("\n")
+
+# A global variable can be used inside a function with the 'global' keyword
+print("A global variable can be used inside a function with the 'global' keyword: \n")
+x = 1
+def g_func(n):
+    global x
+    print(x)
+    x = n
+    print(x)
+g_func(5)
+print("\n")
+
+# Anonymous functions are lambdas
+print("Anonymous functions are lambdas: \n")
+print((lambda x: x > 2)(3))
+print((lambda x, y: x ** 2 + y ** 2)(2, 3))
+print("\n")
+
+# List comprehensions are shorthand list modifications
+# Handy for mapping and filtering
+# The output is a list so these can be nested
+print("List comprehensions are shortrhand list modifications: \n")
+# Mapping
+def add_10(n):
+    return n + 10
+x = [add_10(i) for i in [1, 2, 3]]
+print(x)
+x = [(lambda x: x + 10)(i) for i in [1, 2, 3]]
+print(x)
+x = [x + 10 for x in [1, 2, 3]]
+print(x)
+# Filtering
+x = [x for x in [1, 2, 3] if x > 1]
+print(x)
+print("\n")
+
+# Dict & set comprehensions are shorthand modifications
+print("Dict & set comprehensions are shorthand modifications: \n")
+# Sets
+x = {x for x in 'abcdddddeeeeff' if x not in 'abc'}
+print(x)
+# Dict
+x = {x: x ** 2 for x in range(5)} # x is the key and then the value is x to the power of 2
+print(x)
+print("\n")

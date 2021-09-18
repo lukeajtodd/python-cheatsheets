@@ -109,3 +109,15 @@ try:
     print(next(iterator))
 except StopIteration as e:
     print("After the last value when calling 'next' a StopIteration error is thrown.")
+
+# map: (func, []) -> <map obj<iterable>>
+x = map(lambda x: x * 2, [1, 2, 3])
+print(x)
+x = list(x)
+print(x)
+
+# filter: (func, []) -> <filer obj<iterable>>
+y = filter(lambda x: x > 5, [3, 4, 5, 6, 7, 8])
+print(y)
+y = list(y)
+print(y)
