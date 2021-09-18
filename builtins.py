@@ -64,3 +64,48 @@ print(dict.setdefault(4, 5)) # Will stay as 4
 # {}.update: dict: {} -> updated_dict: {}
 dict.update({ 5: 5 })
 print(dict)
+
+# {} is set
+# {}.add: value: any(immut) -> void
+st = {1, 2}
+st.add(3)
+print(st)
+
+# {} is set
+# {}.copy: void -> {}
+# Shallow copy of the set
+st2 = st.copy()
+print(st2)
+print(st2 is st)
+
+# range: (lower: int, upper: int, step: int)) -> int<iterable>
+int_iter = range(5)
+int_iter_limited = range(5, 8)
+int_iter_step = range(1, 10, 2)
+print(int_iter)
+print(int_iter_limited)
+print(int_iter_step)
+
+# enumerate: [] -> (index: int, value: any)
+for i, value in enumerate([1, 2, 3]):
+    print(i, value)
+
+# iter: <iterable> -> <iterator>
+a_dict = {1: 'one', 2: 'two', 3: 'three'}
+iterable = a_dict.keys()
+iterator = iter(iterable)
+print(iterable)
+print(iterator)
+try:
+    iterable[0]
+except TypeError as e:
+    print('Accessing an iterable via index is not allowed.')
+
+# next: <iterator> -> value: any
+print(next(iterator))
+print(next(iterator))
+print(next(iterator))
+try:
+    print(next(iterator))
+except StopIteration as e:
+    print("After the last value when calling 'next' a StopIteration error is thrown.")

@@ -123,8 +123,8 @@ lis2.extend(letters)
 print(lis2)
 print("\n")
 
-# "in" can be used to check for a value existing in a list, tuple or dict(keys)
-print("'in' can be used to check for a value in a list: \n")
+# "in" can be used to check for a value existing in a list, tuple, dict(keys) and set
+print("'in' can be used to check for a value in a list, tuple, dict(keys) and set: \n")
 print('hi' in lis)
 print(1 in lis2)
 print("\n")
@@ -164,4 +164,106 @@ dict = { "one" : 1, 2: "two", 3.0: 3}
 print(dict)
 print("\n")
 
-#
+# Sets can be created in two ways
+print("Sets are created in two ways: \n")
+st = set()
+st2 = {1, 2, 3, 4, 5}
+print(st)
+print(st2)
+print("\n")
+
+# Set elements need to be immutable
+print("Set elements need to be immutable: \n")
+st.add(1)
+st.add('hi')
+st.add((1))
+print(st)
+print("\n")
+
+# Set elements cannot be repeated
+print("Set elements cannot be duplicates: \n")
+st.add(1)
+print(st)
+print("\n")
+
+# Set intersection is done with &
+# This will find all same values
+print("Sets intersection is done witht &: \n")
+print(st & st2)
+print("\n")
+
+# Set union is handled with |
+print("Sets are combined (union) via |: \n")
+print(st | st2)
+print("\n")
+
+# Set difference uses -
+# Finds the values that differ from each set
+# Does not include values from the second set that differs
+print("Set differences uses -: \n")
+print(st2 - st)
+print("\n")
+
+# Set symmetric difference uses ^
+# Will find differences from both sets
+print("Set symmetric difference uses ^: \n")
+print(st2 ^ st)
+print("\n")
+
+# Find a set superset with >=
+# If the first set is contained within the second set
+print("Fine if a set is a superset of another set with >=: \n")
+print(st >= st2)
+print("\n")
+
+# Find if a set is a subset of another with <=
+# If the second set is contained within the first
+print("Find if a set is a subset of another with <=: \n")
+print(st <= st2)
+print("\n")
+
+# try, except, else, finally
+# Handles catching errors and finalising a process
+# pass is used to noop
+print("try, except, else, finally: \n")
+try:
+    raise IndexError("I am an error")
+except IndexError as e:
+    print('Index Error')
+    pass
+except (TypeError, NameError):
+    print("Multiple handled exceptions")
+    pass
+else:
+    # Runs if no exceptions fire
+    print("All fine")
+finally:
+    # Will always run
+    print('Finally block')
+print("\n")
+
+# "with" can be used to handle exceptions in a terser way than "try"
+# Useful with opening files as it will handle closing (same with streams)
+# Can also be used to write to files, streams, etc
+print("'with' is used to handle opening files, streams, etc in a terser way (than using 'try'): \n")
+with open('test.txt', 'w+') as file:
+    file.write("konnichiwa")
+with open('test.txt') as file:
+    for line in file:
+        print(line)
+print("\n")
+
+# Iterable objects are generics that act like lists
+print("Iterable objects are generics that act as lists: \n")
+a_dict = {1: 'one', 2: 'two', 3: 'three'}
+print(a_dict.keys()) # Iterable created
+for i in a_dict.keys():
+    print(i)
+print("\n")
+
+# An iterable can be pulled out into an actual list with 'list'
+print("An iterable can be pulled out into an actual list with 'list': \n")
+dict_list = list(a_dict.keys())
+print(dict_list)
+print("\n")
+
