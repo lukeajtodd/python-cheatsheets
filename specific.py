@@ -1,3 +1,5 @@
+from functools import wraps
+
 # Division results in a float
 print("Division results in a float: \n")
 print(10 / 3)
@@ -364,4 +366,123 @@ print(x)
 # Dict
 x = {x: x ** 2 for x in range(5)} # x is the key and then the value is x to the power of 2
 print(x)
+print("\n")
+
+# General class outline
+print("General class outline. \n")
+print("Create with 'Human(name='John')' or 'Human('John')'")
+class Human:
+    species = 'H. Sapiens'
+
+    # Run on class initialisation
+    # One of the dunder methods
+    def __init__(self, name):
+        self.name = name
+        self._age = 0
+
+    def say(self, msg):
+        print(f"{self.name}: {msg}")
+
+    def sing(self):
+        return "yo... yo... microphone check... one two... one two..."
+
+    # Method available to all instances of a a class
+    # e.g. (Human(name='Test Name')).get_species
+    @classmethod
+    def get_species(cls):
+        return cls.species
+
+    # Called without a class or instance reference
+    # e.g. Human.grunt
+    @staticmethod
+    def grunt():
+        return "grunt"
+
+    # Acts as a getter. No need in most cases
+    @property
+    def age(self):
+        return self._age
+
+    # Setter for the age property
+    @age.setter
+    def age(self, age):
+        self._age = age
+
+    # Allows deletion of the age property
+    @age.deleter
+    def age(self):
+        del self._age
+
+print("\n")
+
+# Inheritance allows a class to pull methods and attributes from a parent
+print("Inheritance: Pull attributes and methods from a parent class: \n")
+print("Multiple inehritance is possible, it would look like this: Superhero(Human, Person)")
+print("You need to call the actual '__init__' method for each parent. Super only looks up the MRO list.")
+class Superhero(Human):
+    species = "Superhuman"
+
+    def __init__(self, name, movie=False, superpowers=["super strength", "bulletproofing"]):
+        self.fictional = True
+        self.movie = movie
+        self.superpowers = superpowers
+
+        super().__init__(name)
+
+    def sing(self):
+        return "Dun, dun, DUN!"
+
+    def boast(self):
+        for power in self.superpowers:
+            print(f"I wield the power of {power}!")
+print("\n")
+
+# To get the lookup order for inherited classes, attributes and methods use the "__mro__"
+print("Use '__mro__' to get the lookup order for getattr() and super(): \n")
+print(Superhero.__mro__)
+print("\n")
+
+# Generators: memory-efficient access for large datasets
+print("Generators memory-efficient access for large datasets: \n")
+def double_numbers(iterable):
+    for i in iterable:
+        yield i + i
+
+for i in double_numbers(range(1, 90000000)):
+    print(i)
+    if i >= 30:
+        break
+print("\n")
+
+# Generator comprehensions can shorthand the generator function set up
+# They can be cast to lists eacily.
+print("Generator comprehensions can act as shorthand for generator functions: \n")
+values = (-x for x in [1, 2, 3, 4, 5])
+for i in values:
+    print(i)
+
+values = (-x for x in [1, 2, 3, 4, 5])
+as_list = list(values)
+print(as_list)
+print("\n")
+
+# Decorators can alter methods or functions adding more/specific functionality
+print("Decorators can add features to methods and functions: \n")
+def beg(target_func):
+    @wraps(target_func)
+    def wrapper(*args, **kwargs):
+        msg, say_please = target_func(*args, **kwargs)
+        if say_please:
+            return f"{msg} Please I am poor :("
+        return msg
+
+    return wrapper
+
+@beg
+def say(say_please=False):
+    msg = "Can you buy me a beer?"
+    return msg, say_please
+
+print(say())
+print(say(say_please=True))
 print("\n")
